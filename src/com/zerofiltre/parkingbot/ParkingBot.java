@@ -15,7 +15,32 @@ public class ParkingBot {
    * @param args : Tableau de données entrées lors du lancement de l'application
    */
   public static void main(String[] args) {
+   /* for (int i = 0; i < customers.length; i++) {
+      sayHello(customers[i]);
+    }*/
 
+   /* for(String customer: customers){
+      sayHello(customer);
+    }*/
+
+    System.out.println("Nous avons " + parkingSize + " place(s) restante(s)");
+    int customerNumber = 0;
+
+    while (parkingSize > 0){
+      parkingSize--;
+
+      if(customers[customerNumber].equals("Réné")){
+        customerNumber++;
+        parkingSize++;
+        continue;
+      }
+
+      if(customers[customerNumber].equals("Booba")){
+        break;
+      }
+      sayHello(customers[customerNumber]);
+      customerNumber++;
+    }
   }
 
 
