@@ -35,6 +35,10 @@ public class ParkingBot {
     Ticket carTicket = parkingService.processIncomingVehicle(car);
     System.out.println(carTicket);
 
+    System.out.println(parkingService.processExistingVehicule(vehicleTicket));
+    System.out.println(parkingService.processExistingVehicule(bicycleTicket));
+    System.out.println(parkingService.processExistingVehicule(carTicket));
+
   }
 
 }
