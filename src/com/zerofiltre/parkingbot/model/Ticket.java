@@ -41,5 +41,9 @@ public class Ticket {
     this.exitTime = exitTime;
   }
 
-
+  @Override
+  public String toString() {
+    return "Ticket d'un montant de: " +amount+ " $ pour le vehicule de type "+ vehicle.getCategory()+
+            " etrer a "+ enteringTime+ " et sorti a" + exitTime;
+  }
 }
