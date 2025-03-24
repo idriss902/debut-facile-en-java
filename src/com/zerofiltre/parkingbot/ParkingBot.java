@@ -6,6 +6,8 @@ import com.zerofiltre.parkingbot.model.Ticket;
 import com.zerofiltre.parkingbot.model.Vehicle;
 import com.zerofiltre.parkingbot.service.ParkingService;
 
+import java.util.*;
+
 public class ParkingBot {
 
   static ParkingService parkingService = new ParkingService();
@@ -36,6 +38,47 @@ public class ParkingBot {
     Ticket carTicket = parkingService.processIncomingVehicle(car);
     System.out.println(carTicket);
 
+    //tableaux
+//    Ticket[] tickets = new Ticket[3];
+//    tickets[0] = vehicleTicket;
+//    tickets[1] = bicycleTicket;
+//    tickets[2] = carTicket;
+    //listes ordonnees
+//    List<Ticket> tickets = new ArrayList<Ticket>();
+//    tickets.add(vehicleTicket);
+//    tickets.add(bicycleTicket);
+//    tickets.add(carTicket);
+//    listes non ordonnees
+    Set<Ticket> tickets = new HashSet<Ticket>();
+    tickets.add(vehicleTicket);
+    tickets.add(bicycleTicket);
+    tickets.add(carTicket);
+
+    //dictionnaires(Map)
+    Map<Integer,Ticket> exitOrder = new HashMap<>();
+
+
+
+    System.out.println("Traitement de sortie par lot");
+    int position = 0;
+    for(Ticket ticket: tickets){
+      exitOrder.put(position,ticket);
+      position++;
+      System.out.println(parkingService.processExitingVehicle(ticket));
+    }
+
+    Set<Integer> keySet = exitOrder.keySet();
+
+    for(int key: keySet){
+      System.out.println("Position dans la liste: " +key+ ":"+ exitOrder.get(key).getVehicle().getCategory());
+    }
+//    for(Ticket ticket: tickets){
+//      System.out.println(parkingService.processExitingVehicle(ticket));
+//    }
+
+    /*for (int i = 0; i < myList.size(); i++) {
+      System.out.println(parkingService.processExitingVehicle(myList.get(i)));
+    }*/
   }
 
 
